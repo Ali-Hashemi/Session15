@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
     public static final String INTENT_ACTION_TEST = "com.example.session15.TEST";
 
@@ -55,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_TEST) {
             if (resultCode == RESULT_OK) {
-                String firstName = data.getStringExtra(ResultActivity.EXTRA_KEY_FIRST_NAME);
-                String lastName = data.getStringExtra(ResultActivity.EXTRA_KEY_LAST_NAME);
-                Toast.makeText(this, firstName + " " + lastName, Toast.LENGTH_SHORT).show();
+                if (data != null) {
+                    String firstName = data.getStringExtra(ResultActivity.EXTRA_KEY_FIRST_NAME);
+                    String lastName = data.getStringExtra(ResultActivity.EXTRA_KEY_LAST_NAME);
+                    Toast.makeText(this, firstName + " " + lastName, Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
